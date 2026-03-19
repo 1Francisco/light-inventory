@@ -1,65 +1,72 @@
 import Image from "next/image";
+import BottomNav from "@/components/BottomNav";
+import { TrendingUp, ArrowUp, ShoppingBag, Package, AlertTriangle, ChevronRight } from "lucide-react";
 
-export default function Home() {
+export default function Dashboard() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-1 px-6 pt-16 pb-32">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <p className="text-slate-400 text-sm font-semibold mb-1">Miércoles, 19 Mar</p>
+            <h2 className="text-[28px] font-extrabold text-slate-900 tracking-tight">Hola, Alex 👋</h2>
+          </div>
+          <div className="w-14 h-14 bg-brand-100 rounded-full flex justify-center items-center overflow-hidden border-4 border-white shadow-sm shrink-0">
+            <img src="https://ui-avatars.com/api/?name=Alex&background=d1fae5&color=059669&bold=true" alt="Profile" className="w-full h-full object-cover" />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Cards */}
+        <div className="flex flex-col gap-4">
+          {/* Ganancia Neta */}
+          <div className="bg-white rounded-[28px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100">
+            <div className="flex justify-between items-start mb-3">
+              <h3 className="text-slate-400 font-bold text-sm uppercase tracking-wide">Ganancia neta hoy</h3>
+              <div className="bg-brand-50 p-2.5 rounded-[14px] text-brand-500">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+            </div>
+            <p className="text-[40px] font-extrabold text-slate-900 mb-1 tracking-tight">$1,450</p>
+            <div className="inline-flex items-center gap-1.5 bg-green-50 px-2.5 py-1 rounded-lg">
+              <ArrowUp className="w-3.5 h-3.5 text-brand-600" />
+              <span className="text-sm font-bold text-brand-600">12% vs ayer</span>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="bg-white rounded-[28px] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex-1">
+              <div className="bg-blue-50 w-12 h-12 rounded-2xl flex items-center justify-center text-blue-500 mb-4">
+                <ShoppingBag className="w-6 h-6" />
+              </div>
+              <p className="text-slate-400 font-bold text-xs uppercase tracking-wide mb-1">Ventas de hoy</p>
+              <p className="text-3xl font-extrabold text-slate-900">12</p>
+            </div>
+            
+            <div className="bg-white rounded-[28px] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex-1">
+              <div className="bg-purple-50 w-12 h-12 rounded-2xl flex items-center justify-center text-purple-500 mb-4">
+                <Package className="w-6 h-6" />
+              </div>
+              <p className="text-slate-400 font-bold text-xs uppercase tracking-wide mb-1">En catálogo</p>
+              <p className="text-3xl font-extrabold text-slate-900">84</p>
+            </div>
+          </div>
+
+          {/* Alertas */}
+          <div className="mt-2 bg-orange-50 rounded-[28px] p-5 border border-orange-100/60 flex items-center gap-4 cursor-pointer active:scale-[0.98] transition-all">
+            <div className="bg-orange-100 p-3 rounded-2xl text-orange-500 shrink-0">
+              <AlertTriangle className="w-6 h-6" />
+            </div>
+            <div className="flex-1">
+              <p className="text-orange-900 font-extrabold mb-0.5 text-[15px]">Atención de Stock</p>
+              <p className="text-orange-700/80 text-sm font-bold">2 productos casi agotados</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-orange-300" />
+          </div>
         </div>
-      </main>
+      </div>
+      
+      <BottomNav />
     </div>
   );
 }
